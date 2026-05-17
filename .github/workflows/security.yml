@@ -16,7 +16,7 @@ jobs:
       actions: read
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: github/codeql-action/init@v3
         with:
           languages: javascript-typescript
@@ -26,7 +26,7 @@ jobs:
     name: Dependency audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v3
         with: { version: 9 }
       - run: pnpm audit --audit-level=moderate || true
@@ -35,7 +35,7 @@ jobs:
     name: Secret scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with: { fetch-depth: 0 }
       - uses: gitleaks/gitleaks-action@v2
         env:
@@ -45,7 +45,7 @@ jobs:
     name: Soroban contract audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-audit --locked
       - run: cargo audit --file contracts/Cargo.lock || true
