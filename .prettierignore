@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+.next
+coverage
+target
+*.wasm
+pnpm-lock.yaml
+CHANGELOG.md

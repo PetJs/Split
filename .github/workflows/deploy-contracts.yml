@@ -1,0 +1,37 @@
+name: Deploy Contracts
+
+on:
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Network to deploy to'
+        required: true
+        type: choice
+        options: [testnet, mainnet]
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.network }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.network }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "contracts -> target"
+      - name: Install Stellar CLI
+        run: cargo install --locked stellar-cli
+      - name: Build WASM
+        working-directory: contracts
+        run: cargo build --target wasm32-unknown-unknown --release
+      - name: Deploy
+        run: |
+          stellar contract deploy \
+            --wasm contracts/target/wasm32-unknown-unknown/release/group_escrow.wasm \
+            --network ${{ inputs.network }} \
+            --source-account deployer
+        env:
+          STELLAR_SECRET_KEY: ${{ secrets.DEPLOYER_SECRET }}

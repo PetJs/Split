@@ -1,0 +1,9 @@
+name: ❓ Question
+description: Ask a question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Stop!** Questions belong in [Discussions](../../discussions), not Issues.
+
+        Please close this and open a Discussion instead. Issues are for bugs and feature requests only.

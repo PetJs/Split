@@ -1,0 +1,13 @@
+# Default owners
+*                              @your-github-username
+
+# Critical paths require extra scrutiny
+/contracts/                    @your-github-username
+/packages/stellar/             @your-github-username
+/packages/core/src/settle.ts   @your-github-username
+/.github/workflows/            @your-github-username
+
+# Docs
+/apps/docs/                    @your-github-username
+/docs/                         @your-github-username
+*.md                           @your-github-username

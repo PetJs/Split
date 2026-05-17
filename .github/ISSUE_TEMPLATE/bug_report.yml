@@ -1,0 +1,67 @@
+name: 🐛 Bug Report
+description: Report a bug
+labels: ["type/bug", "status/needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for reporting! Please fill out as much as you can."
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package affected
+      options:
+        - core
+        - stellar
+        - ui
+        - db
+        - shared
+        - contracts/group-escrow
+        - apps/web
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click on ...
+        3. See error ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: network
+    attributes:
+      label: Stellar network
+      options:
+        - testnet
+        - mainnet
+        - futurenet
+        - N/A
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "macOS 14.3, Node 20.10, pnpm 9.0"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      render: shell
