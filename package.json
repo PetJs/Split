@@ -2,6 +2,7 @@
   "name": "stellar-split",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "Bill-splitting and group expense settlement on Stellar",
   "repository": {
     "type": "git",
@@ -33,11 +34,13 @@
     "@changesets/cli": "^2.27.0",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
+    "@eslint/js": "^10.0.1",
     "eslint": "^9.0.0",
     "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "typescript-eslint": "^8.59.4"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
